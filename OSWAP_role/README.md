@@ -1,38 +1,53 @@
-Role Name
-=========
+dependency_check_role
+=====================
 
-A brief description of the role goes here.
+Installs OWASP Dependency-Check on Linux hosts.
+This role downloads the specified version, unpacks it to a directory, and creates a global symlink so the dependency-check command can be run from anywhere.
 
 Requirements
-------------
+============
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+1- Linux OS (Ubuntu, Debian, etc)
+
+2- Internet access to download the Dependency-Check zip file
+
+3- wget and unzip installed (the role installs them if missing)
 
 Role Variables
---------------
+===============
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables are available in defaults/main.yml and can be overridden:
+
+# Version of Dependency-Check to install
+depcheck_version: "8.4.1"
+
+# Directory where Dependency-Check will be installed
+install_dir: "/opt/dependency-check"
 
 Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+=============
+java.
 
 Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+================
+- hosts: dev_servers
+  become: yes
+  roles:
+    - role: dependency_check_role
+      vars:
+        depcheck_version: "8.4.1"
+        install_dir: "/opt/dependency-check"
 
 License
--------
+=======
 
 BSD
 
 Author Information
-------------------
+==================
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Lina Mohamed
+Ashgan Adel 
+Merna Athawy
+shayma saeed
+— GitHub: linamohamed93/ansible_project
