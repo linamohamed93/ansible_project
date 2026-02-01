@@ -5,7 +5,9 @@ This project contains several Ansible roles to install and configure key develop
 All roles are ready to be used in CI/CD pipelines or on Linux hosts.
 
 Roles Overview
+===============
 1. Nexus_role
+   ==========
 
 Installs Sonatype Nexus Repository Manager OSS (3.x) as a container/pod.
 The role pulls the official Nexus image and runs it with default settings.
@@ -21,6 +23,7 @@ Requirements:
 3- Variables: None
 
 2. dependency_check_role
+==============================
 
 Installs OWASP Dependency-Check on Linux hosts.
 Downloads the specified version, unpacks it, and sets up a global symlink for easy use.
@@ -42,6 +45,7 @@ install_dir: "/opt/dependency-check"
 
 
 3. trivy_role
+   ============
 
 Installs Trivy vulnerability scanner via the official APT repository.
 
@@ -54,7 +58,8 @@ Requirements:
 Variables: None
 
 
-4. nvm_nodejs_role
+4. nodejs_role
+================
 
 Installs NVM (Node Version Manager) and a specific Node.js version.
 Removes existing Node.js, installs dependencies, sets up NVM, and installs Node.js.
