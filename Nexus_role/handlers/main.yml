@@ -1,0 +1,3 @@
+ - name: Install Nexus
+   debug:
+        msg: "Install Nexus successfully"

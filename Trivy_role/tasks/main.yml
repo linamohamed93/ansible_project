@@ -1,0 +1,33 @@
+- name: Install required dependencies for Trivy
+  apt: 
+        name:
+          - wget 
+          - gnupg
+          - lsb-release
+        state: present
+   
+      
+- name: Add Trivy GPG key 
+  get_url:
+        url: https://aquasecurity.github.io/trivy-repo/deb/public.key
+        dest: /usr/share/keyrings/trivy-archive-keyring.gpg
+        mode: '0644'
+
+- name: Add Trivy APT repository 
+  apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/trivy-archive-keyring.gpg] https://aquasecurity.github.io/trivy-repo/deb {{ansible_distribution_release}} main"
+        state: present
+        filename: trivy
+
+- name: Install Trivy
+  apt:
+        name: trivy
+        state: present
+
+- name: execute Trivy version
+  command: trivy --version
+  register: version_tr
+
+- name: Show trivy version
+  debug: 
+        msg: "Install Trivy {{version_tr.stdout}} successfully"
