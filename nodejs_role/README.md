@@ -1,38 +1,54 @@
-Role Name
-=========
+nodejs_role
+===============
 
-A brief description of the role goes here.
+Installs NVM (Node Version Manager) and a specific Node.js version on Linux hosts.
+This role removes any existing Node.js installation, installs required dependencies, sets up NVM, and installs Node.js.
 
 Requirements
-------------
+============
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+1- Linux OS (Ubuntu/Debian recommended)
+
+2- Internet access to download NVM and Node.js
+
+3- curl, build-essential, libssl-dev, software-properties-common, gnupg, and ca-certificates (installed automatically by the role)
 
 Role Variables
---------------
+===============
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The following variables are available in defaults/main.yml:
+
+1-  Version of NVM to install==> nvm_version: "v0.39.6"
+
+
+2- Node.js version to install via NVM==>node_version: "14"
+
+You can override these variables in your playbook or using host_vars/group_vars.
 
 Dependencies
-------------
+============
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+None.
 
 Example Playbook
-----------------
-
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+================
+- hosts: dev_servers
+  become: yes
+  roles:
+    - role: nvm_nodejs_role
+      vars:
+        nvm_version: "v0.39.6"
+        node_version: "14"
 
 License
--------
+========
 
 BSD
 
 Author Information
-------------------
+==================
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Lina Mohamed 
+Ashgan Adel
+Merna Athaway
+Shayma Saeed— GitHub: linamohamed93/ansible_project
