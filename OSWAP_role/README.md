@@ -18,11 +18,11 @@ Role Variables
 
 The following variables are available in defaults/main.yml and can be overridden:
 
-# Version of Dependency-Check to install
-depcheck_version: "8.4.1"
+ 1- Version of Dependency-Check to install==>depcheck_version: "8.4.1"
 
-# Directory where Dependency-Check will be installed
-install_dir: "/opt/dependency-check"
+
+2- Directory where Dependency-Check will be installed ==>install_dir: "/opt/dependency-check"
+
 
 Dependencies
 =============
