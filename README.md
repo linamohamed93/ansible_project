@@ -23,7 +23,7 @@ Requirements:
 3- Variables: None
 
 2. dependency_check_role
-==============================
+   ===========================
 
 Installs OWASP Dependency-Check on Linux hosts.
 Downloads the specified version, unpacks it, and sets up a global symlink for easy use.
@@ -59,7 +59,7 @@ Variables: None
 
 
 4. nodejs_role
-================
+   =============
 
 Installs NVM (Node Version Manager) and a specific Node.js version.
 Removes existing Node.js, installs dependencies, sets up NVM, and installs Node.js.
