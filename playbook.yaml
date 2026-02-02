@@ -1,0 +1,10 @@
+
+- name: playbook for install pipline dependencies
+  hosts: localhost
+  become: yes
+  roles:
+   - git_role
+   - nodejs_role
+   - OSWAP_role
+   - Nexus_role
+   - Trivy_role
