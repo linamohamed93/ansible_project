@@ -12,12 +12,16 @@
         url: https://aquasecurity.github.io/trivy-repo/deb/public.key
         dest: /usr/share/keyrings/trivy-archive-keyring.gpg
         mode: '0644'
+- name: git codename of os
+  ansible.builtin.command: lsb_release -cs
+  register: distro_codename
+  changed_when: false
 
-- name: Add Trivy APT repository 
-  apt_repository:
-        repo: "deb [signed-by=/usr/share/keyrings/trivy-archive-keyring.gpg] https://aquasecurity.github.io/trivy-repo/deb {{ansible_distribution_release}} main"
-        state: present
-        filename: trivy
+- name:  Add Trivy APT repository 
+  ansible.builtin.apt_repository:
+    repo: "deb https://aquasecurity.github.io/trivy-repo/deb {{ distro_codename.stdout }} main"
+    state: present
+    filename: trivy.list
 
 - name: Install Trivy
   apt:
