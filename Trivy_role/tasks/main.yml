@@ -19,7 +19,7 @@
 
 - name:  Add Trivy APT repository 
   ansible.builtin.apt_repository:
-    repo: "deb https://aquasecurity.github.io/trivy-repo/deb {{ distro_codename.stdout }} main"
+    repo: "deb [signed-by=/usr/share/keyrings/trivy-archive-keyring.gpg] https://aquasecurity.github.io/trivy-repo/deb {{ distro_codename.stdout }} main"
     state: present
     filename: trivy.list
 
